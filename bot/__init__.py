@@ -381,7 +381,12 @@ try:
 except KeyError:
     logging.warning('SERVER_PORT not provided!')
     SERVER_PORT = None
-
+try:
+    TIMEZONE = getConfig('TIMEZONE')
+    if len(TIMEZONE) == 0:
+        TIMEZONE = None
+except KeyError:
+    TIMEZONE = 'Asia/Kuala_Lumpur'
 try:
     TOKEN_PICKLE_URL = getConfig('TOKEN_PICKLE_URL')
     if len(TOKEN_PICKLE_URL) == 0:
@@ -392,6 +397,19 @@ try:
             logging.error(out)
 except KeyError:
     TOKEN_PICKLE_URL = None
+try:
+    RESTARTED_GROUP_ID2 = getConfig('RESTARTED_GROUP_ID2')
+    if len(RESTARTED_GROUP_ID2) == 0:
+        RESTARTED_GROUP_ID2 = None
+except KeyError:
+    RESTARTED_GROUP_ID2 = 'None'
+
+try:
+    RESTARTED_GROUP_ID = getConfig('RESTARTED_GROUP_ID')
+    if len(RESTARTED_GROUP_ID) == 0:
+        RESTARTED_GROUP_ID = None
+except KeyError:
+    RESTARTED_GROUP_ID = 'None'
 
 try:
     ACCOUNTS_ZIP_URL = getConfig('ACCOUNTS_ZIP_URL')
